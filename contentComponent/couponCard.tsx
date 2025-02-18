@@ -24,7 +24,7 @@ const CouponCard = ({ coupon }:{coupon: Coupon }) => {
   };
 
   return (
-    <div className="p-4 bg-slate-800 border border-slate-700 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <div className="p-4 bg-white rounded-lg hover:shadow-md transition-shadow">
       {/* Benefit Badge */}
       <div className="flex items-center gap-2 mb-3 justify-between">
         <div className='flex items-center gap-2'>
@@ -35,25 +35,25 @@ const CouponCard = ({ coupon }:{coupon: Coupon }) => {
           {getBenefitText()}
         </span>
         </div>
-        <button className="px-4 pb-1 flex items-center bg-gradient-to-tr from-blue-400 to-white hover:bg-blue-700 text-black text-sm font-bold rounded-md">
+        <button className="px-4 pb-1 flex items-center bg-gradient-to-tr from-red-400 to-black hover:bg-blue-700 text-white text-sm font-bold rounded-md">
           {coupon.offer_type === "DEAL" ? "DEAL" : "Show Coupon"}
         </button>
       </div>
 
       {/* Title */}
-      <h3 className="text-base font-semibold text-white mb-2 line-clamp-2">
+      <h3 className="text-base font-semibold text-black mb-2 line-clamp-2">
         {truncateText(coupon.offer_title, 60)}
       </h3>
 
       {/* Description */}
       <div className="mb-3">
-        {isExpanded ? <p className={`text-sm text-slate-300`}>
+        {isExpanded ? <p className={`text-sm text-slate-700`}>
           {coupon.offer_description}
         </p> : ""}
         {coupon.offer_description.length > 100 && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 mt-1"
+            className="text-blue-600 hover:text-blue-300 text-sm font-medium flex items-center gap-1 mt-1"
           >
             {isExpanded ? (
               <>

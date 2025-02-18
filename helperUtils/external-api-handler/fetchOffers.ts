@@ -4,7 +4,7 @@ export const fetchCoupons = async (domain: string): Promise<Coupon[] | null> => 
     try {
         console.log("domain ",domain)
       const response = await fetch(
-        `https://staging.coupons.fit//api/public/offers?store_website=${domain}`,
+        `http://localhost:2000/api/public/offers?store_website=${domain}`,
         {
           headers: {
             'Accept': 'application/json',

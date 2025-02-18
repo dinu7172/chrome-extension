@@ -76,6 +76,7 @@ export default defineBackground(async () => {
 
     try {
       const cookies = await getCookies();
+      console.log("getCookies:- ", cookies)
       if (!cookies.length) {
         console.log("No cookies found.");
         return null as T;
@@ -145,7 +146,7 @@ export default defineBackground(async () => {
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "GET_AUTH") {
-      makeCookieRequest<AuthResponseData>("https://staging.coupons.fit//api/test", {
+      makeCookieRequest<AuthResponseData>(`http://localhost:2000/api/test`, {
         headers: {
           "Accept": "application/json"
         }
@@ -173,7 +174,7 @@ export default defineBackground(async () => {
 
   // // Example with HTML handling
   // try {
-  //   const htmlResponse = await makeCookieRequest<string>("https://staging.coupons.fit//api/test", {
+  //   const htmlResponse = await makeCookieRequest<string>("http://localhost:2000//api/test", {
   //     responseType: 'html',
   //     headers: {
   //       "Accept": "text/html"

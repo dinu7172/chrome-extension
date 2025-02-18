@@ -2,7 +2,7 @@ import HomePage from '@/contentComponent/homePage';
 import Profile from '@/contentComponent/profile';
 import { RxCross1 } from 'react-icons/rx';
 import { MemoryRouter, Routes, Route } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import Header from '@/contentComponent/header';
 import FullPageLoading from '@/contentComponent/fullPageLoading';
 
@@ -26,6 +26,10 @@ export default function App() {
        fetchAuth();
   },[]);
 
+  useEffect(() => {
+    console.log("isShowMainPopup:- ", isShowMainPopup)
+},[isShowMainPopup]);
+
   return (
     <>
       {
@@ -35,11 +39,11 @@ export default function App() {
             style={{zIndex: 99999}}
           >
             <MemoryRouter>
-              <Header setIsShowMainPopup={setIsShowMainPopup} setMouseHovering={setMouseHovering} />
-              <div className="bg-slate-800 p-4 flex flex-col" style={{ height: "calc(100vh - 150px)" }}>
+              <Header setIsShowMainPopup={setIsShowMainPopup} setMouseHovering={setMouseHovering} authData={authData}/>
+              <div className="px-4 flex flex-col" style={{ height: "calc(100vh - 150px)", backgroundColor:"#ECF1F1" }}>
                 <Routes>
                   <Route path="/" element={<HomePage setIsShowMainPopup={setIsShowMainPopup} setMouseHovering={setMouseHovering} />} />
-                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/profile" element={<Profile authData={authData}/>} />
                   {/* Catch-all route for unmatched paths */}
                   {/* <Route path="*" element={<NotFoundPage />} /> */}
                 </Routes>
@@ -51,21 +55,21 @@ export default function App() {
 : 
         (
           <div
-            className="fixed cursor-pointer p-2 pr-1 flex gap-2 items-center right-0 top-[15%] bg-gray-800 text-slate-300 rounded-tl-xl rounded-bl-xl"
-            style={{zIndex: 99999}}
+            className="fixed cursor-pointer p-2 pr-1 flex gap-2 items-center right-0 top-[15%] text-slate-300 rounded-tl-xl rounded-bl-xl"
+            style={{zIndex: 99999, backgroundColor: "black"}}
             onClick={() => setIsShowMainPopup(true)}
             onMouseOver={() => setMouseHovering(true)}
             onMouseLeave={() => setMouseHovering(false)}
           >
-            <div className="border-r-[1px] pr-2">
-              <img src={logo} alt="coupono-logo" width={40} />
+            <div className="border-r-[1px] pr-2 h-[15px]">
+              <img src={logo} alt="coupono-logo" height={30} width={65} className='object-cover'/>
             </div>
             {mouseHovering && (
               <>
-                <div className="text-base font-bold">
+                <div className="text-base font-bold text-white">
                   5 Coupons Found!
                 </div>
-                <div className="ring-1 rounded-full hover:ring-2 ring-red-500 hover:ring-indigo-50 hover:bg-red-600 p-2">
+                <div className="ring-1 rounded-full hover:ring-2 ring-indigo-50 hover:ring-red-500 hover:bg-white p-2">
                   <RxCross1 className="text-[15px]" />
                 </div>
               </>
