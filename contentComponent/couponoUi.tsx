@@ -40,7 +40,7 @@ export default function CouponoUi() {
   }, []);
 
   if (loading) {
-    return <div className="p-4">Loading coupons...</div>;
+    return <div className="p-4 text-white">Loading coupons...</div>;
   }
 
   if (error) {

@@ -16,12 +16,12 @@ export default function Header({setIsShowMainPopup ,setMouseHovering}:Props) {
                     <img src={logo} alt="logo" width={80} />
                 </Link>
 
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center justify-between">
                     <Link to={"/profile"}>
-                    <FaUserCircle  className="cursor-pointer" color="tomato" size={40} />
+                    <FaUserCircle  className="cursor-pointer" color="gray" size={40} />
                     </Link>
                     <div className="border cursor-pointer p-1 flex justify-center items-center rounded-full bg-slate-800 text-white hover:bg-black" onClick={()=>[setIsShowMainPopup(false) , setMouseHovering(false)]}>
-                        <RxCross1 size={20} />
+                        <RxCross1 size={25} />
                     </div>
                 </div>
 

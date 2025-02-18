@@ -1,7 +1,7 @@
 
 export default function Profile() {
   const handleRedirect = () => {
-    window.open("https://staging.coupons.fit/login?by=extension", "_blank", "noopener,noreferrer");
+    window.open("http://localhost:3000/login?by=extension", "_blank", "noopener,noreferrer");
   };
   return (
     <div className=''>

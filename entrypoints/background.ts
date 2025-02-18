@@ -145,13 +145,13 @@ export default defineBackground(async () => {
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "GET_AUTH") {
-      makeCookieRequest<AuthResponseData>("http://localhost:2000/api/test", {
+      makeCookieRequest<AuthResponseData>("https://staging.coupons.fit//api/test", {
         headers: {
           "Accept": "application/json"
         }
       })
         .then(response => {
-          if (response.status !== 200) {
+          if (response?.status !== 200) {
             sendResponse(null)
           } else {
             sendResponse(response);
@@ -173,7 +173,7 @@ export default defineBackground(async () => {
 
   // // Example with HTML handling
   // try {
-  //   const htmlResponse = await makeCookieRequest<string>("http://localhost:2000/api/test", {
+  //   const htmlResponse = await makeCookieRequest<string>("https://staging.coupons.fit//api/test", {
   //     responseType: 'html',
   //     headers: {
   //       "Accept": "text/html"
